@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post '/' => 'postings#create'
   post '/index' => 'postings#create'
+
+  post '/comment/create' => 'comments#create'
 end

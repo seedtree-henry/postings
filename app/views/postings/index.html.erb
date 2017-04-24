@@ -15,4 +15,15 @@
 <% @all_postings.each do |p| %>
   <h2>Title : <%= p.title %></h2>
   <p><%= p.body %></p>
+  <form action="/comment/create" method="POST">
+    <label for="comment">Add a comment:</label>
+    <%= hidden_field_tag(:id_of_posting, p.id) %>
+    <input type="comment" class="form-control" name="content" id="comment"><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <% @all_comments.each do |c| %>
+    <% if c.posting_id == p.id %>
+      <p><%= c.content %></p>
+    <% end %>
+  <% end %>
 <% end %>
